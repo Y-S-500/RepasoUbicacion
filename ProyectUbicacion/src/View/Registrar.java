@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.CiudadC;
+import Controller.ContinenteC;
+import Controller.EstadoC;
+import Controller.PaisC;
+import Model.Entity.Pais;
+import javax.swing.JOptionPane;
 /**
  *
  * @author juan
@@ -30,8 +35,8 @@ public class Registrar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        codigoPostalTxt = new javax.swing.JTextField();
+        descripcionTxt = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,6 +50,11 @@ public class Registrar extends javax.swing.JFrame {
         jLabel3.setText("Qué desea ingresar?");
 
         jToggleButton1.setText("Enviar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,11 +71,11 @@ public class Registrar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(codigoPostalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(descripcionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(96, 96, 96))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -85,8 +95,8 @@ public class Registrar extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codigoPostalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addContainerGap())
@@ -94,6 +104,46 @@ public class Registrar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+ 
+         String valorSeleccionado = (String) jComboBox1.getSelectedItem();
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()"+valorSeleccionado);
+        
+    try {
+       // String codigoPostal ;
+        
+        String Continente;
+        String pais;
+        String Estado;
+        String Ciudad;
+
+        // Captura de datos de entrada
+        if ("pais".equals(valorSeleccionado)) {
+        String descripcion;
+        String codigoPostal ;
+            // Captura el ID del producto mediante un cuadro de diálogo de entrada
+            String id_conti = JOptionPane.showInputDialog("Ingrese el ID del producto a modificar:");
+            int continente_id = Integer.parseInt(id_conti);
+            codigoPostal = codigoPostalTxt.getText();
+            descripcion = descripcionTxt.getText();
+            PaisC agregarpais = new PaisC();
+           agregarpais.GuardarRegistro(codigoPostal, descripcion, continente_id);
+
+        } else if ("Estado".equals(valorSeleccionado)) {
+            
+        } else if ("Ciudad".equals(valorSeleccionado)) {
+            
+        } else if ("Continente".equals(valorSeleccionado)) {
+          
+        }
+
+       
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,12 +181,12 @@ public class Registrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField codigoPostalTxt;
+    private javax.swing.JTextField descripcionTxt;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

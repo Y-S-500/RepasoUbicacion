@@ -15,9 +15,11 @@ public class Configuracion {
     private String password;
 
     public Configuracion() {
+
+     
         this.dbURL = "jdbc:mysql://localhost:3306/ubicacion";
-        this.username = "root";
-        this.password = "";
+       
+        this.password = "root";
     }
 
     public String getDbURL() {
