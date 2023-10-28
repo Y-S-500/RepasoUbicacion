@@ -6,6 +6,9 @@ package Model.Entity;
 
 import Conexion.Conexion;
 import Model.Interface.Accion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -81,13 +84,28 @@ public class Continente implements Accion{
 
     @Override
     public Object Consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Continente> listaDeObjetos = new ArrayList<>();
+        String sql = "SELECT * FROM producto";
+        ResultSet resultSet = conn.consultarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                Continente continente = new Continente();
+                continente.setId(resultSet.getInt("id"));
+                continente.setCodigo_postal(resultSet.getString("codigo_postal"));
+                continente.setDescripcion(resultSet.getString("descripcion"));
+                
+                listaDeObjetos.add(continente);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaDeObjetos;
     }
 
     @Override
     public String ConsultarWhereAnd() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
 }
