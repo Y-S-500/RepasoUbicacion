@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JCheckBox;
+
 /**
  *
  * @author juan
@@ -45,6 +47,11 @@ public class Registrar extends javax.swing.JFrame {
         jLabel3.setText("Qué desea ingresar?");
 
         jToggleButton1.setText("Enviar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +101,19 @@ public class Registrar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+       String valorSeleccionado = (String) jComboBox1.getSelectedItem();
+ 
+        String Ciudad;
+        String Descripcion;
+        int CodigoPostal;
+               
+             
+                
+                
+                        
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
