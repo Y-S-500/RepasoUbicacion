@@ -16,8 +16,6 @@ public interface Accion {
 
     void EliminarFisico();
 
-    void EliminarLogico();
-
     Object Consultar();
 
     String ConsultarWhereAnd();
