@@ -6,6 +6,9 @@ package Model.Entity;
 
 import Conexion.Conexion;
 import Model.Interface.Accion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -95,7 +98,25 @@ public class Estado implements Accion{
 
     @Override
     public Object Consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Estado> listaDeObjetos = new ArrayList<>();
+        String sql = "SELECT * FROM producto";
+        ResultSet resultSet = conn.consultarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                Estado estado = new Estado();
+                estado.setId(resultSet.getInt("id"));
+                estado.setCodigo_postal(resultSet.getString("codigo_postal"));
+                estado.setDescripcion(resultSet.getString("descripcion"));
+                estado.setId_pais(resultSet.getInt("pais_id"));
+                
+                listaDeObjetos.add(estado);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaDeObjetos;
     }
 
     @Override

@@ -6,7 +6,9 @@ package Model.Entity;
 
 import Conexion.Conexion;
 import Model.Interface.Accion;
-
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author srhad
@@ -95,12 +97,30 @@ public class Ciudad implements Accion{
 
     @Override
     public Object Consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Ciudad> listaDeObjetos = new ArrayList<>();
+        String sql = "SELECT * FROM ciudad";
+        ResultSet resultSet = conn.consultarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                Ciudad ciudad = new Ciudad();
+                ciudad.setId(resultSet.getInt("id"));
+                ciudad.setCodigo_postal(resultSet.getString("codigo_postal"));
+                ciudad.setDescripcion(resultSet.getString("descripcion"));
+                ciudad.setId_estado(resultSet.getInt("estado_id"));
+                
+                listaDeObjetos.add(ciudad);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaDeObjetos;
+
     }
 
     @Override
     public String ConsultarWhereAnd() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- 
 }

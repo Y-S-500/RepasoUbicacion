@@ -6,6 +6,9 @@ package Model.Entity;
 
 import Conexion.Conexion;
 import Model.Interface.Accion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -94,7 +97,25 @@ public class Pais implements Accion {
 
     @Override
     public Object Consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<Pais> listaDeObjetos = new ArrayList<>();
+        String sql = "SELECT * FROM producto";
+        ResultSet resultSet = conn.consultarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                Pais pais = new Pais();
+                pais.setId(resultSet.getInt("id"));
+                pais.setCodigo_postal(resultSet.getString("codigo_postal"));
+                pais.setDescripcion(resultSet.getString("descripcion"));
+                pais.setId_continente(resultSet.getInt("contiente_id"));
+                
+                listaDeObjetos.add(pais);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaDeObjetos;
     }
 
     @Override
