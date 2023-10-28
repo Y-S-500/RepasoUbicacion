@@ -85,7 +85,7 @@ public class Continente implements Accion{
     @Override
     public Object Consultar() {
         ArrayList<Continente> listaDeObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM producto";
+        String sql = "SELECT * FROM continente";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {

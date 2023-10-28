@@ -99,7 +99,7 @@ public class Estado implements Accion{
     @Override
     public Object Consultar() {
         ArrayList<Estado> listaDeObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM producto";
+        String sql = "SELECT * FROM estado";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {
