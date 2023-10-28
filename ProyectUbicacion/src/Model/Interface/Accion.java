@@ -20,5 +20,5 @@ public interface Accion {
 
     Object Consultar();
 
-    Object ConsultarWhereAnd();
+    String ConsultarWhereAnd();
 }
