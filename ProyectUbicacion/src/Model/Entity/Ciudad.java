@@ -19,6 +19,7 @@ public class Ciudad implements Accion{
     private String codigo_postal;
     private String descripcion;
     private int id_estado;
+    private String descripcion_estado;
     public Conexion conn = new Conexion();
 
     public int getId() {
@@ -51,6 +52,14 @@ public class Ciudad implements Accion{
 
     public void setId_estado(int id_estado) {
         this.id_estado = id_estado;
+    }
+
+    public String getDescripcion_estado() {
+        return descripcion_estado;
+    }
+
+    public void setDescripcion_estado(String descripcion_estado) {
+        this.descripcion_estado = descripcion_estado;
     }
 
 
@@ -98,7 +107,10 @@ public class Ciudad implements Accion{
     @Override
     public Object Consultar() {
         ArrayList<Ciudad> listaDeObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM ciudad";
+        String sql = "SELECT ciudad.id, ciudad.codigo_postal, ciudad.descripcion, ciudad.estado_id, estado.descripcion AS eDescripcion \n"
+                + "FROM ciudad \n"
+                + "INNER JOIN estado ON ciudad.estado_id = estado.id \n"
+                + "LIMIT 0, 25;";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {
@@ -108,6 +120,7 @@ public class Ciudad implements Accion{
                 ciudad.setCodigo_postal(resultSet.getString("codigo_postal"));
                 ciudad.setDescripcion(resultSet.getString("descripcion"));
                 ciudad.setId_estado(resultSet.getInt("estado_id"));
+                ciudad.setDescripcion_estado(resultSet.getString("eDescripcion"));
                 
                 listaDeObjetos.add(ciudad);
             }

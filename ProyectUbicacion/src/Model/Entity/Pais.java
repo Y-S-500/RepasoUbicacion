@@ -20,6 +20,7 @@ public class Pais implements Accion {
     private String codigo_postal;
     private String descripcion;
     private int id_continente;
+    private String descripcion_continente;
     public Conexion conn = new Conexion();
 
     public int getId() {
@@ -52,6 +53,14 @@ public class Pais implements Accion {
 
     public void setId_continente(int id_continente) {
         this.id_continente = id_continente;
+    }
+
+    public String getDescripcion_continente() {
+        return descripcion_continente;
+    }
+
+    public void setDescripcion_continente(String descripcion_continente) {
+        this.descripcion_continente = descripcion_continente;
     }
 
     @Override
@@ -98,7 +107,10 @@ public class Pais implements Accion {
     @Override
     public Object Consultar() {
         ArrayList<Pais> listaDeObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM pais";
+        String sql = "SELECT pais.id, pais.codigo_postal, pais.descripcion, pais.contiente_id, continente.descripcion AS continenteDescripcion \n"
+                + "FROM pais \n"
+                + "INNER JOIN continente ON pais.contiente_id = continente.id \n"
+                + "LIMIT 0, 25;";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {
@@ -108,7 +120,8 @@ public class Pais implements Accion {
                 pais.setCodigo_postal(resultSet.getString("codigo_postal"));
                 pais.setDescripcion(resultSet.getString("descripcion"));
                 pais.setId_continente(resultSet.getInt("contiente_id"));
-                
+                pais.setDescripcion_continente(resultSet.getString("continenteDescripcion"));
+
                 listaDeObjetos.add(pais);
             }
         } catch (SQLException e) {

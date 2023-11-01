@@ -108,14 +108,14 @@ public class Consultar extends javax.swing.JFrame {
             model.setRowCount(0);
 
             // Limpiar las columnas existentes y establecer nuevas columnas
-            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Continente Id"});
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Continente"});
 
             for (Pais pais : listaDeProductos) {
                 Object[] fila = new Object[3];
 
                 fila[0] = pais.getCodigo_postal();
                 fila[1] = pais.getDescripcion();
-                fila[2] = pais.getId_continente();
+                fila[2] = pais.getDescripcion_continente();
 
                 model.addRow(fila);
             }
@@ -138,7 +138,7 @@ public class Consultar extends javax.swing.JFrame {
             // Limpiar la tabla antes de agregar nuevos datos
             model.setRowCount(0);
             
-            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Pais Id"});
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Pais"});
 
             for (Estado estado : listaDeProductos) {
                 Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
@@ -146,7 +146,7 @@ public class Consultar extends javax.swing.JFrame {
                 //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
                 fila[0] = estado.getCodigo_postal();
                 fila[1] = estado.getDescripcion();
-                fila[2] = estado.getId_pais();
+                fila[2] = estado.getDescripcion_pais();
 
                 model.addRow(fila);
             }
@@ -168,7 +168,7 @@ public class Consultar extends javax.swing.JFrame {
             // Limpiar la tabla antes de agregar nuevos datos
             model.setRowCount(0);
 
-            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Estado Id"});
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Estado"});
 
             for (Ciudad ciudad : listaDeProductos) {
                 Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
@@ -176,7 +176,7 @@ public class Consultar extends javax.swing.JFrame {
                 //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
                 fila[0] = ciudad.getCodigo_postal();
                 fila[1] = ciudad.getDescripcion();
-                fila[2] = ciudad.getId_estado();
+                fila[2] = ciudad.getDescripcion_estado();
 
                 model.addRow(fila);
             }
