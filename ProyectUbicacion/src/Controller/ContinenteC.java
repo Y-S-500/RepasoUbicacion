@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Entity.Continente;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,8 +30,10 @@ public class ContinenteC {
         continente.setDescripcion(descripcion);
         continente.Modificar();
      }
-     public void ConsultarRegistro(){
-
-     }
+    public ArrayList<Continente> ConsultarRegistro() {
+        Continente continente = new Continente();
+        ArrayList<Continente> continentes= (ArrayList<Continente>) continente.Consultar();
+        return continentes;
+    }
      
 }

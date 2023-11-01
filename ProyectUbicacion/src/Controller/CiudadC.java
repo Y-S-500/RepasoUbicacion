@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Entity.Ciudad;
+import java.util.ArrayList;
 
 
 /**
@@ -31,7 +32,9 @@ public class CiudadC {
         ciudad.setId_estado(estado_id);
         ciudad.Modificar();
      }
-     public void ConsultarRegistro(){
-
-     }
+     public ArrayList<Ciudad> ConsultarRegistro() {
+        Ciudad ciudad = new Ciudad();
+        ArrayList<Ciudad> ciudades= (ArrayList<Ciudad>) ciudad.Consultar();
+        return ciudades;
+    }
 }

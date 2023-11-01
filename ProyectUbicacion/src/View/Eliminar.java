@@ -4,6 +4,18 @@
  */
 package View;
 
+import Controller.CiudadC;
+import Controller.ContinenteC;
+import Controller.EstadoC;
+import Controller.PaisC;
+import Model.Entity.Ciudad;
+import Model.Entity.Continente;
+import Model.Entity.Estado;
+import Model.Entity.Pais;
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  *
  * @author juan
@@ -15,13 +27,100 @@ public class Eliminar extends javax.swing.JFrame {
      */
     public Eliminar() {
 
-        
-        
-        
-        
         initComponents();
                 String valorSeleccionado= (String)ComboBoxTabla.getSelectedItem();
         System.out.println(valorSeleccionado);
+    }
+     private void ConsultaContinente() {
+
+        try {
+            ContinenteC controlador = new ContinenteC();
+            ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
+
+
+            for (Continente continente : listaDeProductos) {
+                Object[] fila = new Object[2]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = continente.getCodigo_postal();
+                fila[1] = continente.getDescripcion();
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaPais() {
+
+        try {
+            PaisC controlador = new PaisC();
+            ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
+
+
+
+            for (Pais pais : listaDeProductos) {
+                Object[] fila = new Object[3];
+
+                fila[0] = pais.getCodigo_postal();
+                fila[1] = pais.getDescripcion();
+                fila[2] = pais.getId_continente();
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void ConsultaEstado() {
+
+        try {
+            EstadoC controlador = new EstadoC();
+            ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
+
+
+
+            for (Estado estado : listaDeProductos) {
+                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = estado.getCodigo_postal();
+                fila[1] = estado.getDescripcion();
+                fila[2] = estado.getId_pais();
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaCiudad() {
+
+        try {
+            CiudadC controlador = new CiudadC();
+            ArrayList<Ciudad> listaDeProductos = controlador.ConsultarRegistro();
+
+            for (Ciudad ciudad : listaDeProductos) {
+                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = ciudad.getCodigo_postal();
+                fila[1] = ciudad.getDescripcion();
+                fila[2] = ciudad.getId_estado();
+
+
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -101,11 +200,10 @@ public class Eliminar extends javax.swing.JFrame {
     private void ComboBoxTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTablaActionPerformed
         String valorSeleccionado= (String)ComboBoxTabla.getSelectedItem();
         System.out.println(valorSeleccionado);
-        String lista[] = {"a","b","c"};
+        
         
          switch (valorSeleccionado) {
             case "Continente":
-                
             case "Pais":
             case "Estado":
             case "Ciudad":
@@ -162,6 +260,7 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonEliminar;
