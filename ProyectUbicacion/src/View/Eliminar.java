@@ -15,7 +15,6 @@ import Model.Entity.Pais;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author juan
@@ -28,28 +27,53 @@ public class Eliminar extends javax.swing.JFrame {
     public Eliminar() {
 
         initComponents();
-                String valorSeleccionado= (String)ComboBoxTabla.getSelectedItem();
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
         System.out.println(valorSeleccionado);
     }
-     private void ConsultaContinente() {
+
+    private void EliminarCiudad() {
+        CiudadC ciudad = new CiudadC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        ciudad.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+    }
+
+    private void EliminarContinente() {
+        ContinenteC continente = new ContinenteC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        continente.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void EliminarEstado() {
+        EstadoC estado = new EstadoC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        estado.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void EliminarPais() {
+        PaisC pais = new PaisC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        pais.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void ConsultaContinente() {
 
         try {
             ContinenteC controlador = new ContinenteC();
             ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
 
-
             for (Continente continente : listaDeProductos) {
-                Object[] fila = new Object[2]; // Asumo que tu tabla tiene 6 columnas
-
-                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
-                fila[0] = continente.getCodigo_postal();
-                fila[1] = continente.getDescripcion();
+                String descripcion = continente.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
 
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     private void ConsultaPais() {
@@ -58,15 +82,9 @@ public class Eliminar extends javax.swing.JFrame {
             PaisC controlador = new PaisC();
             ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
 
-
-
             for (Pais pais : listaDeProductos) {
-                Object[] fila = new Object[3];
-
-                fila[0] = pais.getCodigo_postal();
-                fila[1] = pais.getDescripcion();
-                fila[2] = pais.getId_continente();
-
+                String descripcion = pais.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
 
             }
 
@@ -82,16 +100,9 @@ public class Eliminar extends javax.swing.JFrame {
             EstadoC controlador = new EstadoC();
             ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
 
-
-
             for (Estado estado : listaDeProductos) {
-                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
-
-                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
-                fila[0] = estado.getCodigo_postal();
-                fila[1] = estado.getDescripcion();
-                fila[2] = estado.getId_pais();
-
+                String descripcion = estado.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
 
             }
 
@@ -107,16 +118,10 @@ public class Eliminar extends javax.swing.JFrame {
             ArrayList<Ciudad> listaDeProductos = controlador.ConsultarRegistro();
 
             for (Ciudad ciudad : listaDeProductos) {
-                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
-
-                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
-                fila[0] = ciudad.getCodigo_postal();
-                fila[1] = ciudad.getDescripcion();
-                fila[2] = ciudad.getId_estado();
-
+                String descripcion = ciudad.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
 
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -198,21 +203,28 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboBoxTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTablaActionPerformed
-        String valorSeleccionado= (String)ComboBoxTabla.getSelectedItem();
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
         System.out.println(valorSeleccionado);
-        
-        
-         switch (valorSeleccionado) {
-            case "Continente":
+        ComboBoxNombre.removeAllItems();
+
+        switch (valorSeleccionado) {
             case "Pais":
+                this.ConsultaPais();
+                break;
             case "Estado":
+                this.ConsultaEstado();
+                break;
             case "Ciudad":
-            
-         default:
-            // No se hace nada
-            break;
+                this.ConsultaCiudad();
+                break;
+            case "Continente":
+                this.ConsultaContinente();
+                break;
+            default:
+                // No se hace nada
+                break;
         }
-        
+
     }//GEN-LAST:event_ComboBoxTablaActionPerformed
 
     private void ComboBoxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNombreActionPerformed
@@ -220,12 +232,27 @@ public class Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxNombreActionPerformed
 
     private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
-       
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
+        System.out.println(valorSeleccionado);
+        switch (valorSeleccionado) {
+            case "Pais":
+                this.EliminarPais();
+                break;
+            case "Estado":
+                this.EliminarEstado();
+                break;
+            case "Ciudad":
+                this.EliminarCiudad();
+                break;
+            case "Continente":
+                this.EliminarContinente();
+                break;
+            default:
+                // No se hace nada
+                break;
+        }
     }//GEN-LAST:event_ButtonEliminarActionPerformed
-    
 
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -260,7 +287,7 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonEliminar;

@@ -98,7 +98,7 @@ public class Ciudad implements Accion{
         String sql;
         sql = "DELETE FROM ciudad\n"
                 + "WHERE \n"
-                + "	id= " + this.getId() + ";";
+                + "descripcion= '" + this.getDescripcion()+ "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();

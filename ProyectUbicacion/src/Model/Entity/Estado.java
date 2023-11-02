@@ -14,8 +14,8 @@ import java.util.ArrayList;
  *
  * @author srhad
  */
-public class Estado implements Accion{
-   
+public class Estado implements Accion {
+
     private int id;
     private String codigo_postal;
     private String descripcion;
@@ -63,9 +63,6 @@ public class Estado implements Accion{
         this.Descripcion_pais = Descripcion_pais;
     }
 
-    
-
-
     @Override
     public void Agregar() {
         String sql;
@@ -101,7 +98,7 @@ public class Estado implements Accion{
         String sql;
         sql = "DELETE FROM estado\n"
                 + "WHERE \n"
-                + "	id= " + this.getId() + ";";
+                + "descripcion= '" + this.getDescripcion() + "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
@@ -124,7 +121,7 @@ public class Estado implements Accion{
                 estado.setDescripcion(resultSet.getString("descripcion"));
                 estado.setId_pais(resultSet.getInt("pais_id"));
                 estado.setDescripcion_pais(resultSet.getString("pDescripcion"));
-                
+
                 listaDeObjetos.add(estado);
             }
         } catch (SQLException e) {
@@ -138,5 +135,5 @@ public class Estado implements Accion{
     public String ConsultarWhereAnd() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-  
+
 }

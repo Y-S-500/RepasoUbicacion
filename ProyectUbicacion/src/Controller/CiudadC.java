@@ -19,9 +19,9 @@ public class CiudadC {
         ciudad.setId_estado(estado_id);
         ciudad.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Ciudad ciudad = new Ciudad();
-        ciudad.setId(id);
+        ciudad.setDescripcion(descripcion);
         ciudad.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int estado_id){

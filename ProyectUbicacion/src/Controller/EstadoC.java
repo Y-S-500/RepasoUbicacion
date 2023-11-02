@@ -20,9 +20,9 @@ public class EstadoC {
         estado.setId_pais(pais_id);
         estado.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Estado estado = new Estado();
-        estado.setId(id);
+        estado.setDescripcion(descripcion);
         estado.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int pais_id){

@@ -18,9 +18,9 @@ public class ContinenteC {
         continente.setDescripcion(descripcion);
         continente.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Continente continente = new Continente(); 
-        continente.setId(id);
+        continente.setDescripcion(descripcion);
         continente.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion){

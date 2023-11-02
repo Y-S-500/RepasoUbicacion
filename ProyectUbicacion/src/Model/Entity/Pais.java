@@ -98,7 +98,7 @@ public class Pais implements Accion {
         String sql;
         sql = "DELETE FROM pais\n"
                 + "WHERE \n"
-                + "	id= " + this.getId() + ";";
+                + "descripcion= '" + this.getDescripcion()+ "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();

@@ -19,9 +19,9 @@ public class PaisC {
         pais.setId_continente(continente_id);
         pais.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Pais pais = new Pais();
-        pais.setId(id);
+        pais.setDescripcion(descripcion);
         pais.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int continente_id){
