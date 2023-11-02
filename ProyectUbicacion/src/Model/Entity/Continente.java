@@ -76,7 +76,7 @@ public class Continente implements Accion{
         String sql;
         sql = "DELETE FROM continente\n"
                 + "WHERE \n"
-                + "	id= " + this.getId() + ";";
+                + "descripcion= '" + this.getDescripcion()+ "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();

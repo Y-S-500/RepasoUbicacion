@@ -4,6 +4,17 @@
  */
 package View;
 
+import Controller.CiudadC;
+import Controller.ContinenteC;
+import Controller.EstadoC;
+import Controller.PaisC;
+import Model.Entity.Ciudad;
+import Model.Entity.Continente;
+import Model.Entity.Estado;
+import Model.Entity.Pais;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author juan
@@ -14,7 +25,107 @@ public class Eliminar extends javax.swing.JFrame {
      * Creates new form Eliminar
      */
     public Eliminar() {
+
         initComponents();
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
+        System.out.println(valorSeleccionado);
+    }
+
+    private void EliminarCiudad() {
+        CiudadC ciudad = new CiudadC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        ciudad.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+    }
+
+    private void EliminarContinente() {
+        ContinenteC continente = new ContinenteC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        continente.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void EliminarEstado() {
+        EstadoC estado = new EstadoC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        estado.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void EliminarPais() {
+        PaisC pais = new PaisC();
+        System.out.println(ComboBoxNombre.getSelectedItem());
+        pais.EliminarRegistro((String) ComboBoxNombre.getSelectedItem());
+
+    }
+
+    private void ConsultaContinente() {
+
+        try {
+            ContinenteC controlador = new ContinenteC();
+            ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
+
+            for (Continente continente : listaDeProductos) {
+                String descripcion = continente.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void ConsultaPais() {
+
+        try {
+            PaisC controlador = new PaisC();
+            ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
+
+            for (Pais pais : listaDeProductos) {
+                String descripcion = pais.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void ConsultaEstado() {
+
+        try {
+            EstadoC controlador = new EstadoC();
+            ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
+
+            for (Estado estado : listaDeProductos) {
+                String descripcion = estado.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaCiudad() {
+
+        try {
+            CiudadC controlador = new CiudadC();
+            ArrayList<Ciudad> listaDeProductos = controlador.ConsultarRegistro();
+
+            for (Ciudad ciudad : listaDeProductos) {
+                String descripcion = ciudad.getDescripcion();
+                ComboBoxNombre.addItem(descripcion);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -27,16 +138,32 @@ public class Eliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBoxTabla = new javax.swing.JComboBox<>();
+        ComboBoxNombre = new javax.swing.JComboBox<>();
+        ButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Qué desea Eliminar?");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
+        ComboBoxTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxTablaActionPerformed(evt);
+            }
+        });
+
+        ComboBoxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxNombreActionPerformed(evt);
+            }
+        });
+
+        ButtonEliminar.setText("Eliminar");
+        ButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEliminarActionPerformed(evt);
             }
         });
 
@@ -47,9 +174,16 @@ public class Eliminar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ComboBoxTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(ComboBoxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonEliminar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,16 +191,67 @@ public class Eliminar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ComboBoxTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addComponent(ButtonEliminar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboBoxTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTablaActionPerformed
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
+        System.out.println(valorSeleccionado);
+        ComboBoxNombre.removeAllItems();
+
+        switch (valorSeleccionado) {
+            case "Pais":
+                this.ConsultaPais();
+                break;
+            case "Estado":
+                this.ConsultaEstado();
+                break;
+            case "Ciudad":
+                this.ConsultaCiudad();
+                break;
+            case "Continente":
+                this.ConsultaContinente();
+                break;
+            default:
+                // No se hace nada
+                break;
+        }
+
+    }//GEN-LAST:event_ComboBoxTablaActionPerformed
+
+    private void ComboBoxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboBoxNombreActionPerformed
+
+    private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
+        String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
+        System.out.println(valorSeleccionado);
+        switch (valorSeleccionado) {
+            case "Pais":
+                this.EliminarPais();
+                break;
+            case "Estado":
+                this.EliminarEstado();
+                break;
+            case "Ciudad":
+                this.EliminarCiudad();
+                break;
+            case "Continente":
+                this.EliminarContinente();
+                break;
+            default:
+                // No se hace nada
+                break;
+        }
+    }//GEN-LAST:event_ButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,8 +288,11 @@ public class Eliminar extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton ButtonEliminar;
+    private javax.swing.JComboBox<String> ComboBoxNombre;
+    private javax.swing.JComboBox<String> ComboBoxTabla;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

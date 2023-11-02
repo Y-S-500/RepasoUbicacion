@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Entity.Ciudad;
+import java.util.ArrayList;
 
 
 /**
@@ -18,9 +19,9 @@ public class CiudadC {
         ciudad.setId_estado(estado_id);
         ciudad.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Ciudad ciudad = new Ciudad();
-        ciudad.setId(id);
+        ciudad.setDescripcion(descripcion);
         ciudad.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int estado_id){
@@ -31,7 +32,9 @@ public class CiudadC {
         ciudad.setId_estado(estado_id);
         ciudad.Modificar();
      }
-     public void ConsultarRegistro(){
-
-     }
+     public ArrayList<Ciudad> ConsultarRegistro() {
+        Ciudad ciudad = new Ciudad();
+        ArrayList<Ciudad> ciudades= (ArrayList<Ciudad>) ciudad.Consultar();
+        return ciudades;
+    }
 }

@@ -14,12 +14,13 @@ import java.util.ArrayList;
  *
  * @author srhad
  */
-public class Estado implements Accion{
-   
+public class Estado implements Accion {
+
     private int id;
     private String codigo_postal;
     private String descripcion;
     private int id_pais;
+    private String Descripcion_pais;
     public Conexion conn = new Conexion();
 
     public int getId() {
@@ -54,6 +55,13 @@ public class Estado implements Accion{
         this.id_pais = id_pais;
     }
 
+    public String getDescripcion_pais() {
+        return Descripcion_pais;
+    }
+
+    public void setDescripcion_pais(String Descripcion_pais) {
+        this.Descripcion_pais = Descripcion_pais;
+    }
 
     @Override
     public void Agregar() {
@@ -90,7 +98,7 @@ public class Estado implements Accion{
         String sql;
         sql = "DELETE FROM estado\n"
                 + "WHERE \n"
-                + "	id= " + this.getId() + ";";
+                + "descripcion= '" + this.getDescripcion() + "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
@@ -99,7 +107,10 @@ public class Estado implements Accion{
     @Override
     public Object Consultar() {
         ArrayList<Estado> listaDeObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM estado";
+        String sql = "SELECT estado.id, estado.codigo_postal, estado.descripcion, estado.pais_id, pais.descripcion AS pDescripcion \n"
+                + "FROM estado \n"
+                + "INNER JOIN pais ON estado.pais_id = pais.id \n"
+                + "LIMIT 0, 25;";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {
@@ -109,7 +120,8 @@ public class Estado implements Accion{
                 estado.setCodigo_postal(resultSet.getString("codigo_postal"));
                 estado.setDescripcion(resultSet.getString("descripcion"));
                 estado.setId_pais(resultSet.getInt("pais_id"));
-                
+                estado.setDescripcion_pais(resultSet.getString("pDescripcion"));
+
                 listaDeObjetos.add(estado);
             }
         } catch (SQLException e) {
@@ -123,5 +135,5 @@ public class Estado implements Accion{
     public String ConsultarWhereAnd() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-  
+
 }

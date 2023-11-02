@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Entity.Estado;
+import java.util.ArrayList;
 
 
 /**
@@ -19,9 +20,9 @@ public class EstadoC {
         estado.setId_pais(pais_id);
         estado.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Estado estado = new Estado();
-        estado.setId(id);
+        estado.setDescripcion(descripcion);
         estado.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int pais_id){
@@ -32,7 +33,9 @@ public class EstadoC {
         estado.setId_pais(pais_id);
         estado.Modificar();
      }
-     public void ConsultarRegistro(){
-
-     }
+    public ArrayList<Estado> ConsultarRegistro() {
+        Estado estado = new Estado();
+        ArrayList<Estado> estados= (ArrayList<Estado>) estado.Consultar();
+        return estados; 
+    }
 }

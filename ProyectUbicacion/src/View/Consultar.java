@@ -4,6 +4,19 @@
  */
 package View;
 
+import Controller.CiudadC;
+import Controller.ContinenteC;
+import Controller.EstadoC;
+import Controller.PaisC;
+import Model.Entity.Ciudad;
+import Model.Entity.Continente;
+import Model.Entity.Estado;
+import Model.Entity.Pais;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juan
@@ -15,7 +28,165 @@ public class Consultar extends javax.swing.JFrame {
      */
     public Consultar() {
         initComponents();
+         this.SelectComboBox();
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    SelectComboBox();
+                }
+            }
+        });
     }
+    private void SelectComboBox() {
+        String valorSeleccionado = (String) jComboBox1.getSelectedItem();
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valorSeleccionado);
+
+        try {
+
+            // Captura de datos de entrada
+            switch (valorSeleccionado) {
+                case "Pais":
+                    this.ConsultaPais();
+                    break;
+                case "Estado":
+                    this.ConsultaEstado();
+                    break;
+                case "Ciudad":
+                    this.ConsultaCiudad();
+                    break;
+                case "Continente":
+                    this.ConsultaContinente();
+                    break;
+                default:
+                    // No se hace nada
+                    break;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaContinente() {
+
+        try {
+            ContinenteC controlador = new ContinenteC();
+            ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
+
+            DefaultTableModel model = (DefaultTableModel) TablaConsultar.getModel();
+
+            // Limpiar la tabla antes de agregar nuevos datos
+            model.setRowCount(0);
+            
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion"});
+
+            for (Continente continente : listaDeProductos) {
+                Object[] fila = new Object[2]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = continente.getCodigo_postal();
+                fila[1] = continente.getDescripcion();
+
+                model.addRow(fila);
+            }
+
+            TablaConsultar.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaPais() {
+
+        try {
+            PaisC controlador = new PaisC();
+            ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
+
+            DefaultTableModel model = (DefaultTableModel) TablaConsultar.getModel();
+
+            // Limpiar la tabla antes de agregar nuevos datos
+            model.setRowCount(0);
+
+            // Limpiar las columnas existentes y establecer nuevas columnas
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Continente"});
+
+            for (Pais pais : listaDeProductos) {
+                Object[] fila = new Object[3];
+
+                fila[0] = pais.getCodigo_postal();
+                fila[1] = pais.getDescripcion();
+                fila[2] = pais.getDescripcion_continente();
+
+                model.addRow(fila);
+            }
+
+            TablaConsultar.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void ConsultaEstado() {
+
+        try {
+            EstadoC controlador = new EstadoC();
+            ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
+
+            DefaultTableModel model = (DefaultTableModel) TablaConsultar.getModel();
+
+            // Limpiar la tabla antes de agregar nuevos datos
+            model.setRowCount(0);
+            
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Pais"});
+
+            for (Estado estado : listaDeProductos) {
+                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = estado.getCodigo_postal();
+                fila[1] = estado.getDescripcion();
+                fila[2] = estado.getDescripcion_pais();
+
+                model.addRow(fila);
+            }
+
+            TablaConsultar.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ConsultaCiudad() {
+
+        try {
+            CiudadC controlador = new CiudadC();
+            ArrayList<Ciudad> listaDeProductos = controlador.ConsultarRegistro();
+
+            DefaultTableModel model = (DefaultTableModel) TablaConsultar.getModel();
+
+            // Limpiar la tabla antes de agregar nuevos datos
+            model.setRowCount(0);
+
+            model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Estado"});
+
+            for (Ciudad ciudad : listaDeProductos) {
+                Object[] fila = new Object[3]; // Asumo que tu tabla tiene 6 columnas
+
+                //fila[0] = producto.getId(); // Reemplaza con el método adecuado para obtener el ID
+                fila[0] = ciudad.getCodigo_postal();
+                fila[1] = ciudad.getDescripcion();
+                fila[2] = ciudad.getDescripcion_estado();
+
+                model.addRow(fila);
+            }
+
+            TablaConsultar.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +200,7 @@ public class Consultar extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaConsultar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,7 +208,7 @@ public class Consultar extends javax.swing.JFrame {
 
         jLabel1.setText("Qué desea Consultar?");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaConsultar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -48,7 +219,7 @@ public class Consultar extends javax.swing.JFrame {
                 "Codico Postal", "Descripcion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaConsultar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,12 +228,11 @@ public class Consultar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 273, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -117,9 +287,9 @@ public class Consultar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaConsultar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

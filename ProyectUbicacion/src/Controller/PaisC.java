@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Entity.Pais;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,9 +19,9 @@ public class PaisC {
         pais.setId_continente(continente_id);
         pais.Agregar();
      }
-     public void EliminarRegistro(int id){
+     public void EliminarRegistro(String descripcion){
         Pais pais = new Pais();
-        pais.setId(id);
+        pais.setDescripcion(descripcion);
         pais.EliminarFisico();
      }
      public void ModificarRegistro(int id, String codigo_postal, String descripcion, int continente_id){
@@ -31,7 +32,9 @@ public class PaisC {
         pais.setId_continente(continente_id);
         pais.Modificar();
      }
-     public void ConsultarRegistro(){
-
-     }
+    public ArrayList<Pais> ConsultarRegistro() {
+        Pais pais = new Pais();
+        ArrayList<Pais> paises= (ArrayList<Pais>) pais.Consultar();
+        return paises;
+    }
 }
