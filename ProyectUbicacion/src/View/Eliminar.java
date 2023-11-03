@@ -167,7 +167,7 @@ public class Eliminar extends javax.swing.JFrame {
                 ButtonEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(ButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+        getContentPane().add(ButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -209,7 +209,7 @@ public class Eliminar extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Eliminar");
