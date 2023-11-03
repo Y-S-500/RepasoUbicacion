@@ -25,7 +25,9 @@ public class Eliminar extends javax.swing.JFrame {
      * Creates new form Eliminar
      */
     public Eliminar() {
-
+        this.setResizable(false);
+        this.setLocationRelativeTo(null); 
+        this.setLocation(this.getX() - 250, this.getY() - 220);
         initComponents();
         String valorSeleccionado = (String) ComboBoxTabla.getSelectedItem();
         System.out.println(valorSeleccionado);
@@ -150,17 +152,20 @@ public class Eliminar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Qué desea Eliminar?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        ComboBoxTabla.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxTabla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
         ComboBoxTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxTablaActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBoxTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 115, -1));
+        getContentPane().add(ComboBoxTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 115, -1));
 
+        ButtonEliminar.setForeground(new java.awt.Color(255, 255, 255));
         ButtonEliminar.setText("Eliminar");
         ButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,15 +174,17 @@ public class Eliminar extends javax.swing.JFrame {
         });
         getContentPane().add(ButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        ComboBoxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxNombre.setForeground(new java.awt.Color(255, 255, 255));
+        ComboBoxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         ComboBoxNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxNombreActionPerformed(evt);
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -203,6 +210,7 @@ public class Eliminar extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +220,7 @@ public class Eliminar extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Eliminar");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 20, -1, -1));
 

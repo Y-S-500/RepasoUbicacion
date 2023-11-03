@@ -28,7 +28,9 @@ public class Consultar extends javax.swing.JFrame {
      */
     public Consultar() {
         initComponents();
-         this.SelectComboBox();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.SelectComboBox();
         jComboBox1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -37,6 +39,7 @@ public class Consultar extends javax.swing.JFrame {
             }
         });
     }
+
     private void SelectComboBox() {
         String valorSeleccionado = (String) jComboBox1.getSelectedItem();
         System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valorSeleccionado);
@@ -77,7 +80,7 @@ public class Consultar extends javax.swing.JFrame {
 
             // Limpiar la tabla antes de agregar nuevos datos
             model.setRowCount(0);
-            
+
             model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion"});
 
             for (Continente continente : listaDeProductos) {
@@ -137,7 +140,7 @@ public class Consultar extends javax.swing.JFrame {
 
             // Limpiar la tabla antes de agregar nuevos datos
             model.setRowCount(0);
-            
+
             model.setColumnIdentifiers(new String[]{"Codigo Postal", "Descripcion", "Pais"});
 
             for (Estado estado : listaDeProductos) {
@@ -186,7 +189,6 @@ public class Consultar extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,19 +206,23 @@ public class Consultar extends javax.swing.JFrame {
         TablaConsultar = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 115, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 115, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Qué desea Consultar?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        TablaConsultar.setForeground(new java.awt.Color(255, 255, 255));
         TablaConsultar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -247,29 +253,34 @@ public class Consultar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Consultar");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, -1, -1));
+
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 350, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/f219c8f84503eee32016a115be66a4f4.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LugaresV jframe=new LugaresV();
+        LugaresV jframe = new LugaresV();
         jframe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -318,5 +329,6 @@ public class Consultar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,6 +28,8 @@ public class Modificar extends javax.swing.JFrame {
      */
     public Modificar() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
         jTextField1.setPreferredSize(new Dimension(200, 30));
         jTextField2.setPreferredSize(new Dimension(200, 30));
         ComboBoxSeconKey.setVisible(false);
@@ -77,35 +79,46 @@ public class Modificar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ComboBoxUbicacion.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
         ComboBoxUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxUbicacionActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBoxUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 65, 114, -1));
+        getContentPane().add(ComboBoxUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 114, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Qué desea Modificar?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 68, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Codigo postal:");
 
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Descripcion:");
 
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+
+        ComboBoxSeconKey.setForeground(new java.awt.Color(255, 255, 255));
+
+        ComboBoxId.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxIdActionPerformed(evt);
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -153,6 +166,7 @@ public class Modificar extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 105, -1, -1));
 
+        Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,9 +176,11 @@ public class Modificar extends javax.swing.JFrame {
         getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Modificar");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 14, -1, -1));
 
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
