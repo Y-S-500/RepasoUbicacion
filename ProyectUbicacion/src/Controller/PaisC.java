@@ -12,29 +12,35 @@ import java.util.ArrayList;
  * @author juan
  */
 public class PaisC {
-         public void GuardarRegistro(String codigo_postal, String descripcion, int continente_id){
-        Pais pais = new Pais();
-        pais.setCodigo_postal(codigo_postal);
-        pais.setDescripcion(descripcion);
-        pais.setId_continente(continente_id);
-        pais.Agregar();
-     }
+    
      public void EliminarRegistro(String descripcion){
         Pais pais = new Pais();
         pais.setDescripcion(descripcion);
         pais.EliminarFisico();
      }
-     public void ModificarRegistro(int id, String codigo_postal, String descripcion, int continente_id){
-        Pais pais = new Pais();
-        pais.setId(id);
-        pais.setCodigo_postal(codigo_postal);
-        pais.setDescripcion(descripcion);
-        pais.setId_continente(continente_id);
-        pais.Modificar();
-     }
+    
     public ArrayList<Pais> ConsultarRegistro() {
         Pais pais = new Pais();
         ArrayList<Pais> paises= (ArrayList<Pais>) pais.Consultar();
         return paises;
     }
+
+    public void GuardarRegistro(String codigoPostal1, String descripcion1, String Seleccionado1) {
+          Pais pais = new Pais();
+        pais.setCodigo_postal(codigoPostal1);
+        pais.setDescripcion(descripcion1);
+        pais.setDescripcionContinente(Seleccionado1);
+        pais.Agregar();
+        System.out.println("Controller.PaisC.GuardarRegistro()"+codigoPostal1);
+
+    }
+
+    public void ModificarRegistro(String Seleccionado, String codigoPostal1, String descripcion1, String valSeleccionado) {
+           Pais pais = new Pais();
+       pais.setIdDescripcion(Seleccionado);
+        pais.setCodigo_postal(codigoPostal1);
+        pais.setDescripcion(descripcion1);
+        pais.setDescripcionContinente(valSeleccionado);
+        pais.Modificar();
+    }    
 }

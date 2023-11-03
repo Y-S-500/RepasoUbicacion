@@ -13,29 +13,37 @@ import java.util.ArrayList;
  * @author juan
  */
 public class EstadoC {
-     public void GuardarRegistro(String codigo_postal, String descripcion, int pais_id){
-        Estado estado = new Estado();
-        estado.setCodigo_postal(codigo_postal);
-        estado.setDescripcion(descripcion);
-        estado.setId_pais(pais_id);
-        estado.Agregar();
-     }
+   
      public void EliminarRegistro(String descripcion){
         Estado estado = new Estado();
         estado.setDescripcion(descripcion);
         estado.EliminarFisico();
      }
-     public void ModificarRegistro(int id, String codigo_postal, String descripcion, int pais_id){
-        Estado estado = new Estado();
-        estado.setId(id);
-        estado.setCodigo_postal(codigo_postal);
-        estado.setDescripcion(descripcion);
-        estado.setId_pais(pais_id);
-        estado.Modificar();
-     }
+  
     public ArrayList<Estado> ConsultarRegistro() {
         Estado estado = new Estado();
         ArrayList<Estado> estados= (ArrayList<Estado>) estado.Consultar();
         return estados; 
+    }
+
+    public void Agregar(String codigoPostal, String descripcion, String Seleccionado) {
+            Estado estado = new Estado();
+        estado.setCodigo_postal(codigoPostal);
+        estado.setDescripcion(descripcion);
+        estado.setDescripcionPais(Seleccionado);
+        estado.Agregar();
+
+    }
+
+  
+
+    public void ModificarRegistro(String Seleccionado, String codigoPostal, String descripcion, String valSeleccionado) {
+         Estado estado = new Estado();
+        estado.setIdDescripcion(Seleccionado);
+        estado.setCodigo_postal(codigoPostal);
+        estado.setDescripcion(descripcion);
+        estado.setDescripcionPais(valSeleccionado);
+        estado.Modificar();
+
     }
 }

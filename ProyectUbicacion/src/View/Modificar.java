@@ -4,6 +4,19 @@
  */
 package View;
 
+import Controller.CiudadC;
+import Controller.ContinenteC;
+import Controller.EstadoC;
+import Controller.PaisC;
+import Model.Entity.Ciudad;
+import Model.Entity.Continente;
+import Model.Entity.Estado;
+import Model.Entity.Pais;
+import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
+
 /**
  *
  * @author juan
@@ -15,6 +28,25 @@ public class Modificar extends javax.swing.JFrame {
      */
     public Modificar() {
         initComponents();
+        jTextField1.setPreferredSize(new Dimension(200, 30));
+        jTextField2.setPreferredSize(new Dimension(200, 30));
+        ComboBoxSeconKey.setVisible(false);
+        this.SelectComboBox();
+        ComboBoxUbicacion.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    SelectComboBox();
+                }
+            }
+        });
+        this.selectId();
+        ComboBoxId.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    selectId();
+                }
+            }
+        });
     }
 
     /**
@@ -26,19 +58,89 @@ public class Modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBoxUbicacion = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ComboBoxId = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        Ubicacion = new javax.swing.JLabel();
+        ComboBoxSeconKey = new javax.swing.JComboBox<>();
+        Modificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxUbicacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
+        ComboBoxUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxUbicacionActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Qué desea Modificar?");
+
+        jLabel2.setText("Ingrese ID:");
+
+        ComboBoxId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxIdActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Codigo postal:");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Descripcion:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComboBoxSeconKey, 0, 196, Short.MAX_VALUE)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ComboBoxSeconKey)
+                    .addComponent(Ubicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,10 +148,17 @@ public class Modificar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ComboBoxUbicacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(ComboBoxId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Modificar)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,16 +166,207 @@ public class Modificar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addComponent(ComboBoxUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ComboBoxId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Modificar)
+                        .addGap(4, 4, 4)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboBoxUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxUbicacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboBoxUbicacionActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+         String valorSeleccionado = (String) ComboBoxUbicacion.getSelectedItem();
+          String valSeleccionado = (String) ComboBoxSeconKey.getSelectedItem();
+          String Seleccionado = (String) ComboBoxId.getSelectedItem();
+        
+      try {
+       
+        String Continente;
+        
+        String pais;
+        String Estado;
+        String Ciudad;
+
+        // Captura de datos de entrada
+        if ("Pais".equals(valorSeleccionado)) {
+            String descripcion1;
+            String codigoPostal1;
+
+            codigoPostal1 = jTextField1.getText();
+            descripcion1 = jTextField2.getText();
+            PaisC agregarpais = new PaisC();
+            agregarpais.ModificarRegistro(Seleccionado,codigoPostal1, descripcion1, valSeleccionado);
+        } else if ("Estado".equals(valorSeleccionado)) {
+            String descripcion;
+            String codigoPostal;
+
+            codigoPostal = jTextField1.getText();
+            descripcion = jTextField2.getText();
+            EstadoC agregarEstado = new EstadoC();
+            agregarEstado.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
+        } else if ("Ciudad".equals(valorSeleccionado)) {
+            String descripcion;
+            String codigoPostal;
+
+            codigoPostal = jTextField1.getText();
+            descripcion = jTextField1.getText();
+            CiudadC agregarCiudad = new CiudadC();
+            agregarCiudad.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
+        } else if ("Continente".equals(valSeleccionado)) {
+            String descripcion;
+            String codigoPostal;
+           
+            codigoPostal = jTextField1.getText();
+            descripcion = jTextField1.getText();
+            ContinenteC agregarpais = new ContinenteC();
+            agregarpais.ModificarRegistro(valSeleccionado,codigoPostal, descripcion);
+        }
+
+
+           
+            
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void ComboBoxIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxIdActionPerformed
+
+    
+    
+    private String selectId() {
+        String selectedItemId = (String) ComboBoxId.getSelectedItem();
+        return selectedItemId;
+    }
+
+    private void ComboBoxIdContinente() {
+        Ubicacion.setText("");
+        ComboBoxSeconKey.setVisible(false);
+        ContinenteC controlador = new ContinenteC();
+        ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
+
+        ComboBoxId.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+    }
+
+    private void ComboBoxIdPais() {
+        Ubicacion.setText("Continente Id:");
+        ComboBoxSeconKey.setVisible(true);
+        PaisC controlador = new PaisC();
+        ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
+
+        ComboBoxId.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+        
+        ContinenteC control = new ContinenteC();
+        ArrayList<Continente> continentes = control.ConsultarRegistro();
+        
+        ComboBoxSeconKey.removeAllItems();
+        
+        for (int i = 0; i < continentes.size(); i++) {
+            ComboBoxSeconKey.addItem(String.valueOf(continentes.get(i).getDescripcion()));
+        }
+    }
+
+    private void ComboBoxIdeEstado() {
+        Ubicacion.setText("Pais Id:");
+        ComboBoxSeconKey.setVisible(true);
+        EstadoC controlador = new EstadoC();
+        ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
+
+        ComboBoxId.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+        
+        PaisC control = new PaisC();
+        ArrayList<Pais> paises = control.ConsultarRegistro();
+        
+        ComboBoxSeconKey.removeAllItems();
+        
+        for (int i = 0; i < paises.size(); i++) {
+            ComboBoxSeconKey.addItem(String.valueOf(paises.get(i).getDescripcion()));
+        }
+    }
+
+    private void ComboBoxIdCiudad() {
+        Ubicacion.setText("Estado Id:");
+        ComboBoxSeconKey.setVisible(true);
+        CiudadC controlador = new CiudadC();
+        ArrayList<Ciudad> listaDeProductos = controlador.ConsultarRegistro();
+
+        ComboBoxId.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+        
+        EstadoC control = new EstadoC();
+        ArrayList<Estado> estados = control.ConsultarRegistro();
+        
+        ComboBoxSeconKey.removeAllItems();
+        
+        for (int i = 0; i < estados.size(); i++) {
+            ComboBoxSeconKey.addItem(String.valueOf(estados.get(i).getDescripcion()));
+        }
+    }
+
+    private void SelectComboBox() {
+        String valorSeleccionado = (String) ComboBoxUbicacion.getSelectedItem();
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valorSeleccionado);
+
+        try {
+
+            // Captura de datos de entrada
+            switch (valorSeleccionado) {
+                case "Pais":
+                    ComboBoxIdPais();
+                    break;
+                case "Estado":
+                    ComboBoxIdeEstado();
+                    break;
+                case "Ciudad":
+                    ComboBoxIdCiudad();
+                    break;
+                case "Continente":
+                    ComboBoxIdContinente();
+                    break;
+                default:
+                    // No se hace nada
+                    break;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -104,7 +404,17 @@ public class Modificar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> ComboBoxId;
+    private javax.swing.JComboBox<String> ComboBoxSeconKey;
+    private javax.swing.JComboBox<String> ComboBoxUbicacion;
+    private javax.swing.JButton Modificar;
+    private javax.swing.JLabel Ubicacion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

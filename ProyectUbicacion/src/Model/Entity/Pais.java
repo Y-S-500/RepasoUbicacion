@@ -15,8 +15,27 @@ import java.util.ArrayList;
  * @author srhad
  */
 public class Pais implements Accion {
+    private String DescripcionContinente;
 
+   
     private int id;
+
+    public String getDescripcionContinente() {
+        return DescripcionContinente;
+    }
+
+    public void setDescripcionContinente(String DescripcionContinente) {
+        this.DescripcionContinente = DescripcionContinente;
+    }
+    private String idDescripcion;
+
+    public String getIdDescripcion() {
+        return idDescripcion;
+    }
+
+    public void setIdDescripcion(String idDescripcion) {
+        this.idDescripcion = idDescripcion;
+    }
     private String codigo_postal;
     private String descripcion;
     private int id_continente;
@@ -65,33 +84,90 @@ public class Pais implements Accion {
 
     @Override
     public void Agregar() {
-        String sql;
+        
+        
+        String sql = "SELECT continente.id " +
+        "FROM continente " +
+        "WHERE continente.descripcion = '" + this.DescripcionContinente.toString() + "'";
 
-        sql = "INSERT INTO pais ("
-                + "codigo_postal, "
-                + "descripcion, "
-                + "contiente_id, "
-                + ") VALUES ("
-                + "' " + this.getCodigo_postal() + "', "
-                + "' " + this.getDescripcion() + "', "
-                + "' " + this.getId_continente() + "', "
-                + ");";
-        conn.ejecutarSQL(sql);
-        conn.cerrarConexion();
+        ResultSet resultSet = conn.RjecutarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais.Agregar()"+getId());
+    
+
+            sql = "INSERT INTO pais (codigo_postal, descripcion, contiente_id ) VALUES (";
+         sql += "'" + this.getCodigo_postal() + "', ";
+         sql += "'" + this.getDescripcion() + "', ";
+         
+         sql += "'" + this.getId() + "');";
+         System.out.println("Model.Entity.Pais.Agregar()"+getId());
+             conn.ejecutarSQL(sql);
+             conn.cerrarConexion();
+
+   
+
     }
 
     @Override
-    public void Modificar() {
-        String sql;
+   
+      public void Modificar() {
+        
+        
+        String sql = "SELECT continente.id " +
+        "FROM continente " +
+        "WHERE continente.descripcion = '" + this.DescripcionContinente.toString() + "'";
+        
+        ResultSet resultSet1 = conn.RjecutarSQL(sql);
 
-        sql = "UPDATE pais SET "
-                + "codigo_postal = '" + this.getCodigo_postal() + "', "
-                + "descripcion = '" + this.getDescripcion() + "', "
-                + "contiente_id = '" + this.getId_continente() + "', "
-                + "WHERE id = " + this.getId() + ";";
+          try {
+            while (resultSet1.next()) {
+                this.setId_continente(resultSet1.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+          System.out.println("Model.Entity.Pais.id_continentge()"+getId_continente());
+       
+
+        
+         String idSql = "SELECT id " +
+        "FROM pais " +
+        "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
+        ResultSet resultSet = conn.RjecutarSQL(idSql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais. id()"+getId());
+       
+
+      
+        
+        
+       sql = "UPDATE pais SET "
+     + "codigo_postal = '" + this.getCodigo_postal() + "', "
+     + "descripcion = '" + this.getDescripcion() + "', "
+     + "contiente_id = '" + this.getId_continente() + "' "
+     + "WHERE id = " + this.getId() + ";";
+
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
     }
+    
 
     @Override
     public void EliminarFisico() {

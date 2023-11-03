@@ -16,10 +16,18 @@ import java.util.ArrayList;
  */
 public class Continente implements Accion{
     private int id;
+
+    public String getIdDescripcion() {
+        return idDescripcion;
+    }
+
+    public void setIdDescripcion(String idDescripcion) {
+        this.idDescripcion = idDescripcion;
+    }
     private String codigo_postal;
     private String descripcion;
     public Conexion conn = new Conexion();
-
+    private String idDescripcion;
     public int getId() {
         return id;
     }
@@ -47,29 +55,49 @@ public class Continente implements Accion{
     @Override
     public void Agregar() {
         String sql;
+    sql = "INSERT INTO continente (codigo_postal, descripcion) VALUES (";
+    sql += "'" + this.getCodigo_postal() + "', ";
+    sql += "'" + this.getDescripcion()+ "');";
+    conn.ejecutarSQL(sql);
+    conn.cerrarConexion();
 
-        sql = "INSERT INTO continente ("
-                + "codigo_postal, "
-                + "descripcion, "
-                + ") VALUES ("
-                + "' " + this.getCodigo_postal()+ "', "
-                + "' " + this.getDescripcion()+ "', "
-                + ");";
-        conn.ejecutarSQL(sql);
-        conn.cerrarConexion();
     }
 
     @Override
     public void Modificar() {
-        String sql;
+        
+       
+       
 
-        sql = "UPDATE continente SET "
-                + "codigo_postal = '" + this.getCodigo_postal()+ "', "
-                + "descripcion = '" + this.getDescripcion()+ "', "
-                + "WHERE id = " + this.getId() + ";";
+        
+         String SqlU = "SELECT id " +
+        "FROM estado " +
+        "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
+        ResultSet resultSet = conn.RjecutarSQL(SqlU);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais. id()"+getId());
+       
+
+      
+        
+        
+     String  sql = "UPDATE estado SET "
+     + "codigo_postal = '" + this.getCodigo_postal() + "', "
+     + "descripcion = '" + this.getDescripcion()+ "' "
+     + "WHERE id = " + this.getId()+ ";";
+
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
     }
+    
 
     @Override
     public void EliminarFisico() {

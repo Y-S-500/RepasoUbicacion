@@ -56,4 +56,15 @@ public class Conexion {
             return null;
         }
     }
+
+    public ResultSet RjecutarSQL(String sql) {
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(sql);
+        } catch (SQLException e) {
+            System.err.println("Error al consultar la base de datos: " + e.getMessage());
+            return null;
+        }
+
+    }
 }

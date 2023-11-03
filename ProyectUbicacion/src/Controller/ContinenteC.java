@@ -23,17 +23,21 @@ public class ContinenteC {
         continente.setDescripcion(descripcion);
         continente.EliminarFisico();
      }
-     public void ModificarRegistro(int id, String codigo_postal, String descripcion){
-        Continente continente = new Continente();
-        continente.setId(id);
-        continente.setCodigo_postal(codigo_postal);
-        continente.setDescripcion(descripcion);
-        continente.Modificar();
-     }
+   
     public ArrayList<Continente> ConsultarRegistro() {
         Continente continente = new Continente();
         ArrayList<Continente> continentes= (ArrayList<Continente>) continente.Consultar();
         return continentes;
+    }
+
+  
+
+    public void ModificarRegistro(String valSeleccionado, String codigoPostal, String descripcion) {
+          Continente continente = new Continente();
+        continente.setIdDescripcion(valSeleccionado);
+        continente.setCodigo_postal(codigoPostal);
+        continente.setDescripcion(descripcion);
+        continente.Modificar();
     }
      
 }

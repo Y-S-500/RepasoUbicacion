@@ -16,6 +16,23 @@ import java.util.ArrayList;
  */
 public class Estado implements Accion {
 
+    public String getDescripcionPais() {
+        return DescripcionPais;
+    }
+
+    public String getIdDescripcion() {
+        return idDescripcion;
+    }
+
+    public void setIdDescripcion(String idDescripcion) {
+        this.idDescripcion = idDescripcion;
+    }
+
+    public void setDescripcionPais(String DescripcionPais) {
+        this.DescripcionPais = DescripcionPais;
+    }
+    private String idDescripcion;
+    private String DescripcionPais;
     private int id;
     private String codigo_postal;
     private String descripcion;
@@ -65,30 +82,78 @@ public class Estado implements Accion {
 
     @Override
     public void Agregar() {
-        String sql;
+       String sql = "SELECT pais.id " +
+        "FROM pais " +
+        "WHERE pais.descripcion = '" + this.DescripcionPais.toString() + "'";
 
-        sql = "INSERT INTO estado ("
-                + "codigo_postal, "
-                + "descripcion, "
-                + "pais_id, "
-                + ") VALUES ("
-                + "' " + this.getCodigo_postal() + "', "
-                + "' " + this.getDescripcion() + "', "
-                + "' " + this.getId_pais() + "', "
-                + ");";
-        conn.ejecutarSQL(sql);
-        conn.cerrarConexion();
+        ResultSet resultSet = conn.RjecutarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais.Agregar()"+getId());
+    
+
+            sql = "INSERT INTO estado (codigo_postal, descripcion, pais_id ) VALUES (";
+         sql += "'" + this.getCodigo_postal() + "', ";
+         sql += "'" + this.getDescripcion() + "', ";
+         System.out.println("Model.Entity.Pais.Agregar()"+getId());
+         sql += "'" + this.getId() + "');";
+             conn.ejecutarSQL(sql);
+             conn.cerrarConexion();
     }
 
     @Override
     public void Modificar() {
-        String sql;
+       
+       String sql = "SELECT pais.id " +
+        "FROM pais " +
+        "WHERE pais.descripcion = '" + this.DescripcionPais.toString() + "'";
 
-        sql = "UPDATE estado SET "
-                + "codigo_postal = '" + this.getCodigo_postal() + "', "
-                + "descripcion = '" + this.getDescripcion() + "', "
-                + "pais_id = '" + this.getId_pais() + "', "
-                + "WHERE id = " + this.getId() + ";";
+        ResultSet resultSet1 = conn.RjecutarSQL(sql);
+
+          try {
+            while (resultSet1.next()) {
+                this.setId_pais(resultSet1.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+          System.out.println("Model.Entity.Pais.id_continentge()"+getId_pais());
+       
+
+        
+         String idSql = "SELECT id " +
+        "FROM estado " +
+        "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
+        ResultSet resultSet = conn.RjecutarSQL(idSql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais. id()"+getId());
+       
+
+      
+        
+        
+       sql = "UPDATE estado SET "
+     + "codigo_postal = '" + this.getCodigo_postal() + "', "
+     + "descripcion = '" + this.getDescripcion() + "', "
+     + "pais_id = '" + this.getId_pais()+ "' "
+     + "WHERE id = " + this.getId()+ ";";
+
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
     }
@@ -135,5 +200,8 @@ public class Estado implements Accion {
     public String ConsultarWhereAnd() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
+  
 
 }

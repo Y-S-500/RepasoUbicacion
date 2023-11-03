@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * @author juan
  */
 public class CiudadC {
-     public void GuardarRegistro(String codigo_postal, String descripcion, int estado_id){
+     public void GuardarRegistro(String codigo_postal, String descripcion, String selecionado){
         Ciudad ciudad = new Ciudad();
         ciudad.setCodigo_postal(codigo_postal);
         ciudad.setDescripcion(descripcion);
-        ciudad.setId_estado(estado_id);
+        ciudad.setDescripcionEstado(selecionado);
         ciudad.Agregar();
      }
      public void EliminarRegistro(String descripcion){
@@ -24,17 +24,22 @@ public class CiudadC {
         ciudad.setDescripcion(descripcion);
         ciudad.EliminarFisico();
      }
-     public void ModificarRegistro(int id, String codigo_postal, String descripcion, int estado_id){
-        Ciudad ciudad = new Ciudad();
-        ciudad.setId(id);
-        ciudad.setCodigo_postal(codigo_postal);
-        ciudad.setDescripcion(descripcion);
-        ciudad.setId_estado(estado_id);
-        ciudad.Modificar();
-     }
+    
      public ArrayList<Ciudad> ConsultarRegistro() {
         Ciudad ciudad = new Ciudad();
         ArrayList<Ciudad> ciudades= (ArrayList<Ciudad>) ciudad.Consultar();
         return ciudades;
+    }
+
+   
+
+    public void ModificarRegistro(String Seleccionado, String codigoPostal, String descripcion, String valSeleccionado) {
+             Ciudad ciudad = new Ciudad();
+        ciudad.setIdDescripcion(Seleccionado);
+        ciudad.setCodigo_postal(codigoPostal);
+        ciudad.setDescripcion(descripcion);
+        ciudad.setDescripcionEstado(valSeleccionado);
+        ciudad.Modificar();
+
     }
 }

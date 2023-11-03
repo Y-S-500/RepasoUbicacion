@@ -14,9 +14,25 @@ import java.sql.SQLException;
  * @author srhad
  */
 public class Ciudad implements Accion{
-    
+    private String DescripcionEstado;
     private int id;
     private String codigo_postal;
+    private String idDescripcion;
+    public String getDescripcionEstado() {
+        return DescripcionEstado;
+    }
+
+    public String getIdDescripcion() {
+        return idDescripcion;
+    }
+
+    public void setIdDescripcion(String idDescripcion) {
+        this.idDescripcion = idDescripcion;
+    }
+
+    public void setDescripcionEstado(String DescripcionEstado) {
+        this.DescripcionEstado = DescripcionEstado;
+    }
     private String descripcion;
     private int id_estado;
     private String descripcion_estado;
@@ -65,30 +81,78 @@ public class Ciudad implements Accion{
 
     @Override
     public void Agregar() {
-        String sql;
+       String sql = "SELECT estado.id " +
+        "FROM estado " +
+        "WHERE estado.descripcion = '" + this.DescripcionEstado.toString() + "'";
 
-        sql = "INSERT INTO ciudad ("
-                + "codigo_postal, "
-                + "descripcion, "
-                + "estado_id, "
-                + ") VALUES ("
-                + "' " + this.getCodigo_postal() + "', "
-                + "' " + this.getDescripcion() + "', "
-                + "' " + this.getId_estado() + "', "
-                + ");";
-        conn.ejecutarSQL(sql);
-        conn.cerrarConexion();
+        ResultSet resultSet = conn.RjecutarSQL(sql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais.Agregar()"+getId());
+    
+
+            sql = "INSERT INTO ciudad (codigo_postal, descripcion, estado_id) VALUES (";
+         sql += "'" + this.getCodigo_postal() + "', ";
+         sql += "'" + this.getDescripcion() + "', ";
+         System.out.println("Model.Entity.Pais.Agregar()"+getId());
+         sql += "'" + this.getId() + "');";
+             conn.ejecutarSQL(sql);
+             conn.cerrarConexion();
     }
 
     @Override
     public void Modificar() {
-        String sql;
+      
+       String sql = "SELECT estado.id " +
+        "FROM estado " +
+        "WHERE estado.descripcion = '" + this.DescripcionEstado.toString() + "'";
 
-        sql = "UPDATE ciudad SET "
-                + "codigo_postal = '" + this.getCodigo_postal() + "', "
-                + "descripcion = '" + this.getDescripcion() + "', "
-                + "estado_id = '" + this.getId_estado() + "', "
-                + "WHERE id = " + this.getId() + ";";
+        ResultSet resultSet1 = conn.RjecutarSQL(sql);
+
+          try {
+            while (resultSet1.next()) {
+                this.setId_estado(resultSet1.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+          System.out.println("Model.Entity.Pais.id_continentge()"+getId_estado());
+       
+
+        
+         String idSql = "SELECT id " +
+        "FROM ciudad " +
+        "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
+        ResultSet resultSet = conn.RjecutarSQL(idSql);
+
+        try {
+            while (resultSet.next()) {
+                this.setId(resultSet.getInt("id"));
+              
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       System.out.println("Model.Entity.Pais. id()"+getId());
+       
+
+      
+        
+        
+       sql = "UPDATE ciudad SET "
+     + "codigo_postal = '" + this.getCodigo_postal() + "', "
+     + "descripcion = '" + this.getDescripcion() + "', "
+     + "estado_id = '" + this.getId_estado()+ "' "
+     + "WHERE id = " + this.getId()+ ";";
+
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
     }
