@@ -174,7 +174,7 @@ public class Ciudad implements Accion{
         String sql = "SELECT ciudad.id, ciudad.codigo_postal, ciudad.descripcion, ciudad.estado_id, estado.descripcion AS eDescripcion \n"
                 + "FROM ciudad \n"
                 + "INNER JOIN estado ON ciudad.estado_id = estado.id \n"
-                + "LIMIT 0, 25;";
+                + ";";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {

@@ -234,6 +234,7 @@ public class Consultar extends javax.swing.JFrame {
                 "Codico Postal", "Descripcion"
             }
         ));
+        TablaConsultar.setEnabled(false);
         jScrollPane1.setViewportView(TablaConsultar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

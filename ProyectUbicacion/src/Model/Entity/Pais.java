@@ -186,7 +186,7 @@ public class Pais implements Accion {
         String sql = "SELECT pais.id, pais.codigo_postal, pais.descripcion, pais.contiente_id, continente.descripcion AS continenteDescripcion \n"
                 + "FROM pais \n"
                 + "INNER JOIN continente ON pais.contiente_id = continente.id \n"
-                + "LIMIT 0, 25;";
+                + ";";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {

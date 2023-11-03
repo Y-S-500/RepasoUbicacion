@@ -175,7 +175,7 @@ public class Estado implements Accion {
         String sql = "SELECT estado.id, estado.codigo_postal, estado.descripcion, estado.pais_id, pais.descripcion AS pDescripcion \n"
                 + "FROM estado \n"
                 + "INNER JOIN pais ON estado.pais_id = pais.id \n"
-                + "LIMIT 0, 25;";
+                + ";";
         ResultSet resultSet = conn.consultarSQL(sql);
 
         try {
