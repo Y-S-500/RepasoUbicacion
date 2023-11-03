@@ -189,57 +189,54 @@ public class Modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxUbicacionActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-         String valorSeleccionado = (String) ComboBoxUbicacion.getSelectedItem();
-          String valSeleccionado = (String) ComboBoxSeconKey.getSelectedItem();
-          String Seleccionado = (String) ComboBoxId.getSelectedItem();
-        
-      try {
-       
-        String Continente;
-        
-        String pais;
-        String Estado;
-        String Ciudad;
+        String valorSeleccionado = (String) ComboBoxUbicacion.getSelectedItem();
+        String valSeleccionado = (String) ComboBoxSeconKey.getSelectedItem();
+        String Seleccionado = (String) ComboBoxId.getSelectedItem();
 
-        // Captura de datos de entrada
-        if ("Pais".equals(valorSeleccionado)) {
-            String descripcion1;
-            String codigoPostal1;
+        try {
 
-            codigoPostal1 = jTextField1.getText();
-            descripcion1 = jTextField2.getText();
-            PaisC agregarpais = new PaisC();
-            agregarpais.ModificarRegistro(Seleccionado,codigoPostal1, descripcion1, valSeleccionado);
-        } else if ("Estado".equals(valorSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
+            String Continente;
 
-            codigoPostal = jTextField1.getText();
-            descripcion = jTextField2.getText();
-            EstadoC agregarEstado = new EstadoC();
-            agregarEstado.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
-        } else if ("Ciudad".equals(valorSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
+            String pais;
+            String Estado;
+            String Ciudad;
 
-            codigoPostal = jTextField1.getText();
-            descripcion = jTextField1.getText();
-            CiudadC agregarCiudad = new CiudadC();
-            agregarCiudad.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
-        } else if ("Continente".equals(valSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
-           
-            codigoPostal = jTextField1.getText();
-            descripcion = jTextField1.getText();
-            ContinenteC agregarpais = new ContinenteC();
-            agregarpais.ModificarRegistro(valSeleccionado,codigoPostal, descripcion);
-        }
+            // Captura de datos de entrada
+            if ("Pais".equals(valorSeleccionado)) {
+                String descripcion1;
+                String codigoPostal1;
 
+                codigoPostal1 = jTextField1.getText();
+                descripcion1 = jTextField2.getText();
+                PaisC agregarpais = new PaisC();
+                agregarpais.ModificarRegistro(Seleccionado, codigoPostal1, descripcion1, valSeleccionado);
+            } else if ("Estado".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
 
-           
-            
-            
+                codigoPostal = jTextField1.getText();
+                descripcion = jTextField2.getText();
+                EstadoC agregarEstado = new EstadoC();
+                agregarEstado.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
+            } else if ("Ciudad".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
+
+                codigoPostal = jTextField1.getText();
+                descripcion = jTextField2.getText();
+                CiudadC agregarCiudad = new CiudadC();
+                agregarCiudad.ModificarRegistro(Seleccionado, codigoPostal, descripcion, valSeleccionado);
+            } else if ("Continente".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
+
+                codigoPostal = jTextField1.getText();
+                descripcion = jTextField2.getText();
+                ContinenteC agregarpais = new ContinenteC();
+                agregarpais.ModificarRegistro(Seleccionado, codigoPostal, descripcion);
+            } else {
+            };
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_ModificarActionPerformed
@@ -252,8 +249,6 @@ public class Modificar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxIdActionPerformed
 
-    
-    
     private String selectId() {
         String selectedItemId = (String) ComboBoxId.getSelectedItem();
         return selectedItemId;
@@ -283,12 +278,12 @@ public class Modificar extends javax.swing.JFrame {
         for (int i = 0; i < listaDeProductos.size(); i++) {
             ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
         }
-        
+
         ContinenteC control = new ContinenteC();
         ArrayList<Continente> continentes = control.ConsultarRegistro();
-        
+
         ComboBoxSeconKey.removeAllItems();
-        
+
         for (int i = 0; i < continentes.size(); i++) {
             ComboBoxSeconKey.addItem(String.valueOf(continentes.get(i).getDescripcion()));
         }
@@ -305,12 +300,12 @@ public class Modificar extends javax.swing.JFrame {
         for (int i = 0; i < listaDeProductos.size(); i++) {
             ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
         }
-        
+
         PaisC control = new PaisC();
         ArrayList<Pais> paises = control.ConsultarRegistro();
-        
+
         ComboBoxSeconKey.removeAllItems();
-        
+
         for (int i = 0; i < paises.size(); i++) {
             ComboBoxSeconKey.addItem(String.valueOf(paises.get(i).getDescripcion()));
         }
@@ -327,12 +322,12 @@ public class Modificar extends javax.swing.JFrame {
         for (int i = 0; i < listaDeProductos.size(); i++) {
             ComboBoxId.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
         }
-        
+
         EstadoC control = new EstadoC();
         ArrayList<Estado> estados = control.ConsultarRegistro();
-        
+
         ComboBoxSeconKey.removeAllItems();
-        
+
         for (int i = 0; i < estados.size(); i++) {
             ComboBoxSeconKey.addItem(String.valueOf(estados.get(i).getDescripcion()));
         }

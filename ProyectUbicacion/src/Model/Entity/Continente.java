@@ -14,7 +14,8 @@ import java.util.ArrayList;
  *
  * @author srhad
  */
-public class Continente implements Accion{
+public class Continente implements Accion {
+
     private int id;
 
     public String getIdDescripcion() {
@@ -28,6 +29,7 @@ public class Continente implements Accion{
     private String descripcion;
     public Conexion conn = new Conexion();
     private String idDescripcion;
+
     public int getId() {
         return id;
     }
@@ -55,56 +57,48 @@ public class Continente implements Accion{
     @Override
     public void Agregar() {
         String sql;
-    sql = "INSERT INTO continente (codigo_postal, descripcion) VALUES (";
-    sql += "'" + this.getCodigo_postal() + "', ";
-    sql += "'" + this.getDescripcion()+ "');";
-    conn.ejecutarSQL(sql);
-    conn.cerrarConexion();
+        sql = "INSERT INTO continente (codigo_postal, descripcion) VALUES (";
+        sql += "'" + this.getCodigo_postal() + "', ";
+        sql += "'" + this.getDescripcion() + "');";
+        conn.ejecutarSQL(sql);
+        conn.cerrarConexion();
 
     }
 
     @Override
     public void Modificar() {
-        
-       
-       
-
-        
-         String SqlU = "SELECT id " +
-        "FROM estado " +
-        "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
+        String SqlU = "SELECT id "
+                + "FROM continente "
+                + "WHERE descripcion = '" + this.idDescripcion.toString() + "'";
         ResultSet resultSet = conn.RjecutarSQL(SqlU);
 
+        System.out.println("modelo id" + idDescripcion);
         try {
             while (resultSet.next()) {
                 this.setId(resultSet.getInt("id"));
-              
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       System.out.println("Model.Entity.Pais. id()"+getId());
-       
+        System.out.println("Model.Entity.Pais. id()" + getId());
 
-      
-        
-        
-     String  sql = "UPDATE estado SET "
-     + "codigo_postal = '" + this.getCodigo_postal() + "', "
-     + "descripcion = '" + this.getDescripcion()+ "' "
-     + "WHERE id = " + this.getId()+ ";";
+        String sql = "UPDATE continente SET "
+                + "codigo_postal = '" + this.getCodigo_postal() + "', "
+                + "descripcion = '" + this.getDescripcion() + "' "
+                + "WHERE id = " + this.getId() + ";";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
+
     }
-    
 
     @Override
     public void EliminarFisico() {
         String sql;
         sql = "DELETE FROM continente\n"
                 + "WHERE \n"
-                + "descripcion= '" + this.getDescripcion()+ "';";
+                + "descripcion= '" + this.getDescripcion() + "';";
 
         conn.ejecutarSQL(sql);
         conn.cerrarConexion();
@@ -122,7 +116,7 @@ public class Continente implements Accion{
                 continente.setId(resultSet.getInt("id"));
                 continente.setCodigo_postal(resultSet.getString("codigo_postal"));
                 continente.setDescripcion(resultSet.getString("descripcion"));
-                
+
                 listaDeObjetos.add(continente);
             }
         } catch (SQLException e) {

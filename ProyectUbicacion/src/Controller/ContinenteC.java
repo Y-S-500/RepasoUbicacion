@@ -12,32 +12,33 @@ import java.util.ArrayList;
  * @author juan
  */
 public class ContinenteC {
-     public void GuardarRegistro(String codigo_postal, String descripcion){
+
+    public void GuardarRegistro(String codigo_postal, String descripcion) {
         Continente continente = new Continente();
         continente.setCodigo_postal(codigo_postal);
         continente.setDescripcion(descripcion);
         continente.Agregar();
-     }
-     public void EliminarRegistro(String descripcion){
-        Continente continente = new Continente(); 
+    }
+
+    public void EliminarRegistro(String descripcion) {
+        Continente continente = new Continente();
         continente.setDescripcion(descripcion);
         continente.EliminarFisico();
-     }
-   
+    }
+
     public ArrayList<Continente> ConsultarRegistro() {
         Continente continente = new Continente();
-        ArrayList<Continente> continentes= (ArrayList<Continente>) continente.Consultar();
+        ArrayList<Continente> continentes = (ArrayList<Continente>) continente.Consultar();
         return continentes;
     }
 
-  
-
-    public void ModificarRegistro(String valSeleccionado, String codigoPostal, String descripcion) {
-          Continente continente = new Continente();
-        continente.setIdDescripcion(valSeleccionado);
+    public void ModificarRegistro(String Seleccionado, String codigoPostal, String descripcion) {
+        Continente continente = new Continente();
+        continente.setIdDescripcion(Seleccionado);
         continente.setCodigo_postal(codigoPostal);
         continente.setDescripcion(descripcion);
         continente.Modificar();
+        System.out.println("controlador" + Seleccionado);
     }
-     
+
 }
