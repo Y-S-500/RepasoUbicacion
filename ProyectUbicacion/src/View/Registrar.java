@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+
 import Controller.CiudadC;
 import Controller.ContinenteC;
 import Controller.EstadoC;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 /**
  *
  * @author juan
@@ -32,8 +34,8 @@ public class Registrar extends javax.swing.JFrame {
      */
     public Registrar() {
         initComponents();
-         this.SelectComboBox();
-           
+        this.SelectComboBox();
+
     }
 
     /**
@@ -45,22 +47,23 @@ public class Registrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        codigoPostalTxt = new javax.swing.JTextField();
-        descripcionTxt = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        codigoPostalTxt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        descripcionTxt = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox<>();
         ubicacion = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Codigo postal");
-
-        jLabel2.setText("Descripcion");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Continente", "Pais", "Estado", "Ciudad" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -68,8 +71,24 @@ public class Registrar extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 59, -1, -1));
 
         jLabel3.setText("Qué desea ingresar?");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 62, -1, -1));
+
+        jToggleButton1.setText("Enviar");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 310, -1, -1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+
+        jLabel1.setText("Codigo postal");
+
+        jLabel2.setText("Descripcion");
 
         descripcionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,10 +96,9 @@ public class Registrar extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Enviar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -91,141 +109,136 @@ public class Registrar extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ubicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addComponent(codigoPostalTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(descripcionTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(96, 96, 96))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addContainerGap())
+                            .addComponent(codigoPostalTxt)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(descripcionTxt)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(86, 86, 86))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoPostalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descripcionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addContainerGap())
+                .addGap(32, 32, 32))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 99, -1, -1));
+
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 310, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Registar");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 16, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/f219c8f84503eee32016a115be66a4f4.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-     String valorSeleccionado = (String) jComboBox1.getSelectedItem();
-    String Seleccionado = (String) jComboBox2.getSelectedItem();
-    
-    // Limpia la selección en jComboBox2
-    jComboBox2.setSelectedIndex(0); // Esto establece la selección en el primer elemento
+        String valorSeleccionado = (String) jComboBox1.getSelectedItem();
+        String Seleccionado = (String) jComboBox2.getSelectedItem();
 
-    System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + Seleccionado);
+        // Limpia la selección en jComboBox2
+        jComboBox2.setSelectedIndex(0); // Esto establece la selección en el primer elemento
 
-    try {
-       
-        String Continente;
-        
-        String pais;
-        String Estado;
-        String Ciudad;
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + Seleccionado);
 
-        // Captura de datos de entrada
-        if ("Pais".equals(valorSeleccionado)) {
-            String descripcion1;
-            String codigoPostal1;
+        try {
 
-            codigoPostal1 = codigoPostalTxt.getText();
-            descripcion1 = descripcionTxt.getText();
-            PaisC agregarpais = new PaisC();
-            agregarpais.GuardarRegistro(codigoPostal1, descripcion1, Seleccionado);
-        } else if ("Estado".equals(valorSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
+            String Continente;
 
-            codigoPostal = codigoPostalTxt.getText();
-            descripcion = descripcionTxt.getText();
-            EstadoC agregarEstado = new EstadoC();
-            agregarEstado.Agregar(codigoPostal, descripcion, Seleccionado);
-        } else if ("Ciudad".equals(valorSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
+            String pais;
+            String Estado;
+            String Ciudad;
 
-            codigoPostal = codigoPostalTxt.getText();
-            descripcion = descripcionTxt.getText();
-            CiudadC agregarCiudad = new CiudadC();
-            agregarCiudad.GuardarRegistro(codigoPostal, descripcion, Seleccionado);
-        } else if ("Continente".equals(valorSeleccionado)) {
-            String descripcion;
-            String codigoPostal;
-            jComboBox2.setVisible(false);
-            codigoPostal = codigoPostalTxt.getText();
-            descripcion = descripcionTxt.getText();
-            ContinenteC agregarpais = new ContinenteC();
-            agregarpais.GuardarRegistro(codigoPostal, descripcion);
+            // Captura de datos de entrada
+            if ("Pais".equals(valorSeleccionado)) {
+                String descripcion1;
+                String codigoPostal1;
+
+                codigoPostal1 = codigoPostalTxt.getText();
+                descripcion1 = descripcionTxt.getText();
+                PaisC agregarpais = new PaisC();
+                agregarpais.GuardarRegistro(codigoPostal1, descripcion1, Seleccionado);
+            } else if ("Estado".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
+
+                codigoPostal = codigoPostalTxt.getText();
+                descripcion = descripcionTxt.getText();
+                EstadoC agregarEstado = new EstadoC();
+                agregarEstado.Agregar(codigoPostal, descripcion, Seleccionado);
+            } else if ("Ciudad".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
+
+                codigoPostal = codigoPostalTxt.getText();
+                descripcion = descripcionTxt.getText();
+                CiudadC agregarCiudad = new CiudadC();
+                agregarCiudad.GuardarRegistro(codigoPostal, descripcion, Seleccionado);
+            } else if ("Continente".equals(valorSeleccionado)) {
+                String descripcion;
+                String codigoPostal;
+                jComboBox2.setVisible(false);
+                codigoPostal = codigoPostalTxt.getText();
+                descripcion = descripcionTxt.getText();
+                ContinenteC agregarpais = new ContinenteC();
+                agregarpais.GuardarRegistro(codigoPostal, descripcion);
+            }
+
+            // Limpia las cajas de texto después de enviar los datos
+            descripcionTxt.setText("");
+            codigoPostalTxt.setText("");
+
+            descripcionTxt.setText("");
+            codigoPostalTxt.setText("");
+
+            // Reiniciar los componentes a su estado inicial
+            resetearComponentes();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // Limpia las cajas de texto después de enviar los datos
-        descripcionTxt.setText("");
-        codigoPostalTxt.setText("");
-        
-           descripcionTxt.setText("");
-        codigoPostalTxt.setText("");
-
-        // Reiniciar los componentes a su estado inicial
-        resetearComponentes();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
 
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-  
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -233,35 +246,43 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-         String valSeleccionado = (String) jComboBox1.getSelectedItem();
-        System.out.println("View.Registrar.jToggleButton1ActionPerformed()"+valSeleccionado);
+
+        String valSeleccionado = (String) jComboBox1.getSelectedItem();
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valSeleccionado);
         switch (valSeleccionado) {
             case "Pais":
                 AutocompleteContinente();
                 jComboBox2.setVisible(true);
                 break;
-                
+
             case "Estado":
                 AutocompletePais();
                 jComboBox2.setVisible(true);
                 break;
-            case  "Ciudad":
+            case "Ciudad":
                 AutocompleteEstado();
-                  jComboBox2.setVisible(true);
+                jComboBox2.setVisible(true);
                 break;
-                
-            case  "Continente":
+
+            case "Continente":
                 jComboBox2.setVisible(false);
                 break;
-             default :
-                
+            default:
+
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void descripcionTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descripcionTxtActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        LugaresV jframe = new LugaresV();
+        jframe.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,11 +322,15 @@ public class Registrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField codigoPostalTxt;
     private javax.swing.JTextField descripcionTxt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel ubicacion;
@@ -372,229 +397,232 @@ public class Registrar extends javax.swing.JFrame {
 });
 setVisible(true);
 }*/
- 
-  public void AutocompleteEstado() {
-      ubicacion.setText("Selecione estado");
-       	      // Add a document listener to the text field
-    jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            update();
-        }
 
-        private void update() {
-            // Get the user's input
-            String input = jTextField1.getText();
-            // Clear the combo box
-            jComboBox2.removeAllItems();
-            // Get the suggestions from the database
-            ArrayList<String> suggestions;
-            suggestions = getSuggestions(input);
-            // Add the suggestions to the combo box
-            for (String suggestion : suggestions) {
-                if (suggestion.contains(input)) {
-                    jComboBox2.addItem(suggestion);
+    public void AutocompleteEstado() {
+        ubicacion.setText("Selecione estado");
+        // Add a document listener to the text field
+        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update();
+            }
+
+            private void update() {
+                // Get the user's input
+                String input = jTextField1.getText();
+                // Clear the combo box
+                jComboBox2.removeAllItems();
+                // Get the suggestions from the database
+                ArrayList<String> suggestions;
+                suggestions = getSuggestions(input);
+                // Add the suggestions to the combo box
+                for (String suggestion : suggestions) {
+                    if (suggestion.contains(input)) {
+                        jComboBox2.addItem(suggestion);
+                    }
                 }
+                // Show the combo box
+                jComboBox2.setPopupVisible(true);
             }
-          // Show the combo box
-            jComboBox2.setPopupVisible(true);
-        }
 
-    private ArrayList<String> getSuggestions(String input) {
-    ArrayList<String> suggestions = new ArrayList<>();
-   
-        try {
-            // Connect to the database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "root");
-            // Create a statement to query the database
-            Statement stmt = conn.createStatement();
-            // Execute the query and get the results
-            ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM estado WHERE descripcion LIKE '%" + input + "%';");
-            // Loop through the results and add them to the list of suggestions
-            while (rs.next()) {
-                suggestions.add(rs.getString("descripcion"));
-            }
-            // Close the connection and statement
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return suggestions;
-    }     
-});
-setVisible(true);
-}
- 
- 
-  public void AutocompletePais() {
-       	      // Add a document listener to the text field
-              ubicacion.setText("Seleccione pais");
-    jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            update();
-        }
+            private ArrayList<String> getSuggestions(String input) {
+                ArrayList<String> suggestions = new ArrayList<>();
 
-        private void update() {
-            // Get the user's input
-            String input = jTextField1.getText();
-            // Clear the combo box
-            jComboBox2.removeAllItems();
-            // Get the suggestions from the database
-            ArrayList<String> suggestions;
-            suggestions = getSuggestions(input);
-            // Add the suggestions to the combo box
-            for (String suggestion : suggestions) {
-                if (suggestion.contains(input)) {
-                    jComboBox2.addItem(suggestion);
+                try {
+                    // Connect to the database
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "");
+                    // Create a statement to query the database
+                    Statement stmt = conn.createStatement();
+                    // Execute the query and get the results
+                    ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM estado WHERE descripcion LIKE '%" + input + "%';");
+                    // Loop through the results and add them to the list of suggestions
+                    while (rs.next()) {
+                        suggestions.add(rs.getString("descripcion"));
+                    }
+                    // Close the connection and statement
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+                return suggestions;
             }
-          // Show the combo box
-            jComboBox2.setPopupVisible(true);
-        }
+        });
+        setVisible(true);
+    }
 
-    private ArrayList<String> getSuggestions(String input) {
-    ArrayList<String> suggestions = new ArrayList<>();
-   
-        try {
-            // Connect to the database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "root");
-            // Create a statement to query the database
-            Statement stmt = conn.createStatement();
-            // Execute the query and get the results
-            ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM pais WHERE descripcion LIKE '%" + input + "%';");
-            // Loop through the results and add them to the list of suggestions
-            while (rs.next()) {
-                suggestions.add(rs.getString("descripcion"));
+    public void AutocompletePais() {
+        // Add a document listener to the text field
+        ubicacion.setText("Seleccione pais");
+        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update();
             }
-            // Close the connection and statement
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return suggestions;
-    }     
-});
-setVisible(true);
-}
 
- 
-  public void AutocompleteContinente() {
-       	      // Add a document listener to the text field
-               ubicacion.setText("Selecione Continente");
-               
-              
-    jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-         
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            update();
-        }
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            update();
-        }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update();
+            }
 
-        private void update() {
-            // Get the user's input
-            String input = jTextField1.getText();
-            // Clear the combo box
-            jComboBox2.removeAllItems();
-            // Get the suggestions from the database
-            ArrayList<String> suggestions;
-            suggestions = getSuggestions(input);
-            // Add the suggestions to the combo box
-            for (String suggestion : suggestions) {
-                if (suggestion.contains(input)) {
-                    jComboBox2.addItem(suggestion);
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update();
+            }
+
+            private void update() {
+                // Get the user's input
+                String input = jTextField1.getText();
+                // Clear the combo box
+                jComboBox2.removeAllItems();
+                // Get the suggestions from the database
+                ArrayList<String> suggestions;
+                suggestions = getSuggestions(input);
+                // Add the suggestions to the combo box
+                for (String suggestion : suggestions) {
+                    if (suggestion.contains(input)) {
+                        jComboBox2.addItem(suggestion);
+                    }
                 }
+                // Show the combo box
+                jComboBox2.setPopupVisible(true);
             }
-          // Show the combo box
-            jComboBox2.setPopupVisible(true);
-        }
 
-    private ArrayList<String> getSuggestions(String input) {
-    ArrayList<String> suggestions = new ArrayList<>();
-   
-        try {
-            // Connect to the database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "root");
-            // Create a statement to query the database
-            Statement stmt = conn.createStatement();
-            // Execute the query and get the results
-            ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM continente WHERE descripcion LIKE '%" + input + "%';");
-            // Loop through the results and add them to the list of suggestions
-            while (rs.next()) {
-                suggestions.add(rs.getString("descripcion"));
+            private ArrayList<String> getSuggestions(String input) {
+                ArrayList<String> suggestions = new ArrayList<>();
+
+                try {
+                    // Connect to the database
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "");
+                    // Create a statement to query the database
+                    Statement stmt = conn.createStatement();
+                    // Execute the query and get the results
+                    ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM pais WHERE descripcion LIKE '%" + input + "%';");
+                    // Loop through the results and add them to the list of suggestions
+                    while (rs.next()) {
+                        suggestions.add(rs.getString("descripcion"));
+                    }
+                    // Close the connection and statement
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return suggestions;
             }
-            // Close the connection and statement
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return suggestions;
-    }     
-});
-setVisible(true);
-}
-  
-  private void resetearComponentes() {
-    // Reiniciar los componentes a su estado inicial
-   
-    // Reiniciar los componentes a su estado inicial
-    jComboBox1.setSelectedIndex(0); // Establecer la selección en el primer elemento
-    jComboBox2.removeAllItems(); // Eliminar todos los elementos del jComboBox2
-    descripcionTxt.setText("");
-    codigoPostalTxt.setText("");
-}
+        });
+        setVisible(true);
+    }
+
+    public void AutocompleteContinente() {
+        // Add a document listener to the text field
+        ubicacion.setText("Selecione Continente");
+
+        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update();
+            }
+
+            private void update() {
+                // Get the user's input
+                String input = jTextField1.getText();
+                // Clear the combo box
+                jComboBox2.removeAllItems();
+                // Get the suggestions from the database
+                ArrayList<String> suggestions;
+                suggestions = getSuggestions(input);
+                // Add the suggestions to the combo box
+                for (String suggestion : suggestions) {
+                    if (suggestion.contains(input)) {
+                        jComboBox2.addItem(suggestion);
+                    }
+                }
+                // Show the combo box
+                jComboBox2.setPopupVisible(true);
+            }
+
+            private ArrayList<String> getSuggestions(String input) {
+                ArrayList<String> suggestions = new ArrayList<>();
+
+                try {
+                    // Connect to the database
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ubicacion", "root", "");
+                    // Create a statement to query the database
+                    Statement stmt = conn.createStatement();
+                    // Execute the query and get the results
+                    ResultSet rs = stmt.executeQuery("SELECT descripcion  FROM continente WHERE descripcion LIKE '%" + input + "%';");
+                    // Loop through the results and add them to the list of suggestions
+                    while (rs.next()) {
+                        suggestions.add(rs.getString("descripcion"));
+                    }
+                    // Close the connection and statement
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return suggestions;
+            }
+        });
+        setVisible(true);
+    }
+
+    private void resetearComponentes() {
+        // Reiniciar los componentes a su estado inicial
+
+        // Reiniciar los componentes a su estado inicial
+        jComboBox1.setSelectedIndex(0); // Establecer la selección en el primer elemento
+        jComboBox2.removeAllItems(); // Eliminar todos los elementos del jComboBox2
+        descripcionTxt.setText("");
+        codigoPostalTxt.setText("");
+    }
 
     private void SelectComboBox() {
-         String valSeleccionado = (String) jComboBox1.getSelectedItem();
-        System.out.println("View.Registrar.jToggleButton1ActionPerformed()"+valSeleccionado);
+        String valSeleccionado = (String) jComboBox1.getSelectedItem();
+        System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valSeleccionado);
         switch (valSeleccionado) {
             case "Pais":
                 AutocompleteContinente();
-                
+
                 break;
-                
+
             case "Estado":
                 AutocompletePais();
                 break;
-            case  "Ciudad":
+            case "Ciudad":
                 AutocompleteEstado();
                 break;
-                
-            case  "Continente":
-                
+
+            case "Continente":
+
                 break;
-             default :
-                
+            default:
+
         }
     }
 
