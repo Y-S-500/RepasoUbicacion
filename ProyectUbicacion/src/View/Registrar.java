@@ -8,6 +8,8 @@ import Controller.CiudadC;
 import Controller.ContinenteC;
 import Controller.EstadoC;
 import Controller.PaisC;
+import Model.Entity.Ciudad;
+import Model.Entity.Continente;
 import Model.Entity.Estado;
 import Model.Entity.Pais;
 import java.awt.event.ItemEvent;
@@ -42,7 +44,7 @@ public class Registrar extends javax.swing.JFrame {
         jComboBox1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    jComboBox2.removeAllItems();
+                    SelectComboBox();
                 }
             }
         });
@@ -431,7 +433,46 @@ public class Registrar extends javax.swing.JFrame {
 });
 setVisible(true);
 }*/
+private void ComboBoxIdContinente() {
+        jComboBox2.setVisible(true);
+        ubicacion.setText("Selecione Continente");
+        ContinenteC controlador = new ContinenteC();
+        ArrayList<Continente> listaDeProductos = controlador.ConsultarRegistro();
 
+        jComboBox2.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            jComboBox2.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+    }
+
+    private void ComboBoxIdPais() {
+        jComboBox2.setVisible(true);
+        ubicacion.setText("Seleccione pais");
+        PaisC controlador = new PaisC();
+        ArrayList<Pais> listaDeProductos = controlador.ConsultarRegistro();
+
+        jComboBox2.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            jComboBox2.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+    }
+
+    private void ComboBoxIdeEstado() {
+        jComboBox2.setVisible(true);
+        ubicacion.setText("Seleccione estado");
+        EstadoC controlador = new EstadoC();
+        ArrayList<Estado> listaDeProductos = controlador.ConsultarRegistro();
+
+        jComboBox2.removeAllItems();
+
+        for (int i = 0; i < listaDeProductos.size(); i++) {
+            jComboBox2.addItem(String.valueOf(listaDeProductos.get(i).getDescripcion()));
+        }
+    }
+
+    
     public void AutocompleteEstado() {
         ubicacion.setText("Selecione estado");
         // Add a document listener to the text field
@@ -648,15 +689,17 @@ setVisible(true);
         System.out.println("View.Registrar.jToggleButton1ActionPerformed()" + valSeleccionado);
         switch (valSeleccionado) {
             case "Pais":
-                AutocompleteContinente();
-
+                //AutocompleteContinente();
+                ComboBoxIdContinente();
                 break;
 
             case "Estado":
-                AutocompletePais();
+                //AutocompletePais();
+                ComboBoxIdPais();
                 break;
             case "Ciudad":
-                AutocompleteEstado();
+                //AutocompleteEstado();
+                ComboBoxIdeEstado();
                 break;
 
             case "Continente":

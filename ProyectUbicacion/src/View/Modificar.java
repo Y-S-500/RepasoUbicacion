@@ -110,6 +110,11 @@ public class Modificar extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
 
         ComboBoxSeconKey.setForeground(new java.awt.Color(255, 255, 255));
+        ComboBoxSeconKey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxSeconKeyActionPerformed(evt);
+            }
+        });
 
         ComboBoxId.setForeground(new java.awt.Color(255, 255, 255));
         ComboBoxId.addActionListener(new java.awt.event.ActionListener() {
@@ -266,6 +271,10 @@ public class Modificar extends javax.swing.JFrame {
         jframe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboBoxSeconKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSeconKeyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxSeconKeyActionPerformed
 
     private String selectId() {
         String selectedItemId = (String) ComboBoxId.getSelectedItem();
